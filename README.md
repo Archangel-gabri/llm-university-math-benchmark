@@ -52,7 +52,7 @@ Differences across models are significant (Friedman test, χ²=351, p<0.001).
 
 ### Errata
 
-Judge validation surfaced two reference-key errors, now corrected in `data/problems/`: **DM-12** (a₁₀ = 10240, not 5120) and **MS-13** (variance D(α\*) = α²/(n−2)). Task **NT-14** currently has no verified reference answer.
+Judge validation surfaced two reference-key errors, now corrected in `data/problems/`: **DM-12** (a₁₀ = 10240, not 5120) and **MS-13** (variance D(α\*) = α²/(n−2)). Task **NT-14** reference answer added (d=111, derived in the paper supplement).
 
 ## License
 
