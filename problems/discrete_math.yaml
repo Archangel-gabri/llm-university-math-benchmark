@@ -96,7 +96,7 @@ problems:
     difficulty: 3
     type: computational
     topic: "Производящие функции"
-    answer: "A(x)=2x/(1−2x)²=Σn·2ⁿ·xⁿ. aₙ=n·2ⁿ⁻¹ (n≥1). a₁₀=10·2⁹=5120."
+    answer: "A(x)=2x/(1−2x)²=Σ n·2ⁿ·xⁿ. aₙ=n·2ⁿ (n≥0). a₁₀=10·2¹⁰=10240."
     source: "Гаврилов-Сапоженко"
 
   - id: DM-13
