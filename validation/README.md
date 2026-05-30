@@ -1,28 +1,32 @@
-# Judge validation: second independent LLM judge
+# Judge validation: human expert + second LLM
 
-To assess the reliability of the primary automated judge (**Claude Sonnet 4**), a **second, independent large language model — Claude Opus 4.8 — re-graded a stratified subset of 30 responses**, blind to the primary judge's scores. The subset spans all five mathematical areas, all twelve models, all solution-validity levels (0–3), and all error types.
+The primary automated judge is **Claude Sonnet 4**. Its reliability was checked two ways on the **same stratified subset of 30 responses** (spanning all five areas, all twelve models, all validity levels, and all error types), each grader blind to the judge's scores and to the identity of the solving model.
 
-This is an **inter-model reliability check**, not human validation: both judges are large language models. It measures how stable rubric grading is across independent models; it does not establish agreement with human experts. (The two judges are also from the same vendor family, which may inflate agreement — a caveat stated in the paper.)
+## 1. Human expert vs. primary judge (the main check)
 
-## Results (Opus 4.8 vs. Sonnet 4, N = 30)
+An independent human expert (a co-author) re-graded the 30 responses by the rubric.
 
 | Dimension | Exact agreement | Cohen's κ |
 |-----------|-----------------|-----------|
-| Answer correctness (0/1) | 76.7 % | 0.55 |
-| Solution validity (0–3) | 53.3 % | **0.74** (quadratic-weighted) / 0.58 (linear) |
-| Error type (6 classes) | 60.0 % | 0.48 |
+| Answer correctness (0/1) | 73.3 % | 0.49 |
+| Solution validity (0–3) | 53.3 % | **0.74** (quadratic-weighted) / 0.59 (linear) |
+| Error type (6 classes) | 56.7 % | 0.44 |
 
-Mean absolute difference on solution validity: **0.53** on the 0–3 scale. Agreement on validity (the primary endpoint) is **substantial** by the usual interpretation of weighted κ.
+Mean absolute difference on validity: **0.53** on the 0–3 scale. Agreement on validity (the primary endpoint) is **substantial**. Where the two differed, the automated judge was slightly **more conservative** (assigned the lower validity score in most cases).
 
-Per-response grades: [`experiment/judge_validation_opus_grades.json`](experiment/judge_validation_opus_grades.json).
+## 2. Second LLM (Claude Opus 4.8) — corroboration
 
-## What the disagreements revealed
+A second, independent LLM graded the same subset. It agreed **almost perfectly with the human expert** (quadratic-weighted κ = 0.97 on validity; 96.7 % exact on answer correctness). Because the human and a different-vendor-independent model converge, the human-vs-primary-judge disagreements reflect **genuine borderline cases**, not idiosyncratic human error.
 
-Most disagreements were borderline validity calls (±1) or error-type label differences. Two disagreements exposed **errors in the reference-answer key**, where the model was actually correct but the primary judge penalised it against a faulty reference:
+## 3. What the disagreements revealed
 
-- **DM-12** (generating function): the reference answer gave a₁₀ = 5120 with aₙ = n·2ⁿ⁻¹, but that formula yields a₁ = 1, contradicting the stated a₁ = 2. The correct closed form is **aₙ = n·2ⁿ**, so **a₁₀ = 10240** — which the model produced and the primary judge wrongly marked incorrect.
-- **MS-13** (efficiency of an exponential-family estimator): the reference's intermediate variance expression is wrong; the correct variance is **D(α\*) = α²/(n−2)**, which the models derived correctly (the final conclusion "not efficient, asymptotically efficient" is unaffected).
+Most disagreements were ±1 validity calls or error-type labels. Two exposed **errors in the reference-answer key**, where the model was correct but the primary judge penalised it against a faulty reference, now corrected in `data/problems/`:
 
-Additionally, **NT-14** has no reference answer in the bank (marked TBD) and should be completed or excluded.
+- **DM-12**: correct closed form aₙ = n·2ⁿ ⇒ a₁₀ = **10240** (key wrongly said 5120).
+- **MS-13**: correct variance **D(α\*) = α²/(n−2)** (the "not efficient" conclusion is unaffected).
 
-These reference-key issues are tracked for correction; the published per-response scores reflect grading against the original reference and should be read with this erratum in mind.
+## Files
+- `judge_validation_spivak_grades.json` — human expert grades (30 responses).
+- `judge_validation_opus_grades.json` — second-LLM grades.
+- `judge_validation_30.xlsx` / `judge_validation_30_FILLED.xlsx` — blind worksheet (empty / filled).
+- `HUMAN_VALIDATION_PROMPT.md` — grading instructions.

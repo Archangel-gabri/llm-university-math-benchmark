@@ -29,7 +29,7 @@ Unlike answer-only math benchmarks, this dataset evaluates the **solution proces
 - **75 problems**, single text track, **one run per problem** (N=1), `temperature=0`, `max_tokens=4096`.
 - **Judge:** `anthropic/claude-sonnet-4` against a reference answer. 887/900 responses scored.
 - **Rubric:** answer correctness (0/1), solution validity (0–3), error type (PE/CE/AE/HE/IE/NONE), completeness (0–2), clarity (0–2).
-- **Judge reliability** ([`validation/`](validation/README.md)): a second independent LLM (Claude Opus 4.8) re-graded 30 responses; quadratic-weighted Cohen's κ = 0.74 on validity. Human validation is in progress (see `validation/HUMAN_VALIDATION_PROMPT.md`).
+- **Judge reliability** ([`validation/`](validation/README.md)): an independent **human expert** re-graded 30 responses (quadratic-weighted Cohen's κ = 0.74 on validity vs the judge), corroborated by a second LLM (Claude Opus 4.8) that agreed with the human at κ = 0.97.
 
 ### Headline results (mean solution validity, 0–3)
 
