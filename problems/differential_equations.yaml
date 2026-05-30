@@ -1,0 +1,129 @@
+section: "Дифференциальные уравнения"
+section_id: DE
+total: 15
+
+problems:
+  - id: DE-1
+    text: "Доказать формулу: det(e^A) = e^{tr A}, где A — квадратная матрица."
+    difficulty: 3
+    type: proof
+    topic: "Матричная экспонента"
+    answer: "Доказательство через жорданову нормальную форму: A = PJP^{-1}, e^A = Pe^JP^{-1}, det(e^A) = det(e^J) = произведение e^{λ_i} = e^{Σλ_i} = e^{tr A}"
+    source: "Филиппов, задача 4*"
+    photo: "photos/Nkj0F52G0vdP1O1.jpg"
+
+  - id: DE-2
+    text: "Показать, что уравнение dx/dt + x = f(t), где |f(t)| ≤ M при -∞ < t < +∞, имеет одно решение, ограниченное при -∞ < t < +∞. Найти это решение. Показать, что найденное решение периодическое, если f(t) периодическая."
+    difficulty: 3
+    type: proof
+    topic: "Линейное ОДУ 1-го порядка, ограниченные решения"
+    answer: "x(t) = ∫_{-∞}^{t} e^{-(t-s)} f(s) ds. Единственность через оценку разности двух ограниченных решений."
+    source: "Филиппов, задача 181*"
+    photo: "photos/photo_12-51-35.jpg"
+
+  - id: DE-3
+    text: "Решить систему: ẍ + 4ẋ − 2x − 2ẏ − y = 0, ẍ − 4ẋ − ÿ + 2ẏ + 2y = 0."
+    difficulty: 2
+    type: computational
+    topic: "Система ОДУ 2-го порядка"
+    answer: "Через характеристическое уравнение системы"
+    source: "Филиппов, задача 824"
+    photo: "photos/photo_12-51-44.jpg"
+
+  - id: DE-4
+    text: "В каждой из областей, где сохраняется тип уравнения, найти общее решение: u_{xy} + xu_x + 2yu_y + 2xyu = 0."
+    difficulty: 2
+    type: computational
+    topic: "Уравнения в частных производных, классификация"
+    answer: "Замена переменных, приведение к каноническому виду, интегрирование"
+    source: "Филиппов, задача 2.11.8"
+    photo: "photos/photo_12-51-53.jpg"
+
+  - id: DE-5
+    text: "Доказать, что решение задачи Коши u_{xy} = 0, |x| < 1, 0 < y < 1; u|_{y=x²} = 0, u_y|_{y=x²} = u_1(x) существует только тогда, когда u_1(x) ∈ C(-1,1), xu_1(x) ∈ C¹(-1,1), u_1(x) — чётная функция. Показать, что u(x,y) = 2∫_x^{√y} ξu_1(ξ)dξ."
+    difficulty: 3
+    type: proof
+    topic: "Задача Коши для PDE"
+    answer: "u(x,y) = 2∫_x^{√y} ξu_1(ξ)dξ"
+    source: "Филиппов, задача 12.4"
+    photo: "photos/photo_12-52-08.jpg"
+
+  - id: DE-6
+    text: "Решить дифференциальное уравнение: y' = x²/y."
+    difficulty: 1
+    type: computational
+    topic: "ОДУ с разделяющимися переменными"
+    answer: "3y² − 2x³ = C"
+    source: "Демидович (аналог)"
+
+  - id: DE-7
+    text: "Найти общее решение уравнения: y' + 2y/x = cos x."
+    difficulty: 1
+    type: computational
+    topic: "Линейное ОДУ 1-го порядка"
+    answer: "y = (sin x + C)/x²"
+    source: "Демидович (аналог)"
+
+  - id: DE-8
+    text: "Решить однородное уравнение: y' = y/x + tan(y/x)."
+    difficulty: 1
+    type: computational
+    topic: "Однородное уравнение"
+    answer: "sin(y/x) = Cx"
+    source: "Демидович (аналог)"
+
+  - id: DE-9
+    text: "Решить уравнение в полных дифференциалах: (2x + y)dx + (x + 2y)dy = 0."
+    difficulty: 1
+    type: computational
+    topic: "Полные дифференциалы"
+    answer: "x² + xy + y² = C"
+    source: "mathprofi.ru"
+
+  - id: DE-10
+    text: "Решить уравнение Бернулли: y' + y/x = y²."
+    difficulty: 2
+    type: computational
+    topic: "Уравнение Бернулли"
+    answer: "yx(C − ln|x|) = 1; особое решение y = 0"
+    source: "math24.ru"
+
+  - id: DE-11
+    text: "Найти общее решение: y'' − 5y' + 6y = 0."
+    difficulty: 2
+    type: computational
+    topic: "ОДУ 2-го порядка с постоянными коэффициентами"
+    answer: "y = C₁e^{2x} + C₂e^{3x}"
+    source: "mathprofi.ru"
+
+  - id: DE-12
+    text: "Решить задачу Коши: y' = xy, y(0) = 1."
+    difficulty: 2
+    type: computational
+    topic: "Задача Коши"
+    answer: "y = e^{x²/2}"
+    source: "Стандартная задача"
+
+  - id: DE-13
+    text: "Решить систему ОДУ матричным методом: x' = 2x + y, y' = x + 2y."
+    difficulty: 3
+    type: computational
+    topic: "Линейная система ОДУ"
+    answer: "λ₁=1, λ₂=3. x = C₁eᵗ + C₂e³ᵗ, y = −C₁eᵗ + C₂e³ᵗ"
+    source: "КФУ, сборник задач"
+
+  - id: DE-14
+    text: "Методом вариации постоянных найти общее решение: y'' + 2y' + y = e^{−x}√(x+1)."
+    difficulty: 3
+    type: computational
+    topic: "Метод вариации постоянных (Лагранжа)"
+    answer: "y = (C₁ + C₂x)e^{−x} + (4/15)(x+1)^{5/2}e^{−x}"
+    source: "1cov-edu.ru"
+
+  - id: DE-15
+    text: "Определить тип и привести к каноническому виду уравнение: u_{xx} + 10u_{xy} + 9u_{yy} = 0."
+    difficulty: 3
+    type: computational
+    topic: "Классификация PDE"
+    answer: "D = 25 − 9 = 16 > 0, гиперболический тип. Характеристики: ξ = y−x, η = y−9x. Канонический вид: u_{ξη} = 0"
+    source: "ТПУ, курс матфизики"

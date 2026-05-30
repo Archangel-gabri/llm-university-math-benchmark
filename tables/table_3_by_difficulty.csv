@@ -1,0 +1,13 @@
+model_name,diff_1,diff_2,diff_3
+Claude-Opus-4,0.792,0.87,0.714
+Claude-Sonnet-4,0.792,0.87,0.679
+GPT-4.1,0.792,0.783,0.714
+DeepSeek-V4-Pro,0.773,0.864,0.667
+DeepSeek-V4-Flash,0.75,0.864,0.8
+DeepSeek-R1,0.75,0.636,0.704
+Gemini-2.5-Flash,0.75,0.565,0.464
+Grok-4.3,0.75,0.957,0.786
+Qwen3-235B,0.75,0.913,0.75
+Llama-4-Maverick,0.75,0.783,0.571
+Gemma-3-27B,0.667,0.609,0.464
+Mistral-Small,0.0,0.043,0.0

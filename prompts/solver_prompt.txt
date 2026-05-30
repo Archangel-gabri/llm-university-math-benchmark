@@ -1,0 +1,14 @@
+[Text track — instruction sent to every model, with {problem} substituted]
+
+Реши следующую математическую задачу. Приведи полное пошаговое решение.
+
+Задача:
+{problem}
+
+Требования:
+1. Покажи каждый шаг решения
+2. Укажи, какой метод или теорему применяешь на каждом шаге
+3. Дай окончательный ответ в явном виде
+
+API parameters: temperature=0, max_tokens=4096, single run per problem (N=1).
+Provider: OpenRouter. Dates: 27–28 May 2026.
