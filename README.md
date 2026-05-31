@@ -1,25 +1,40 @@
-# LLM University-Level Mathematics Benchmark (process-level, Russian)
+# LLM University-Level Mathematics Benchmark
 
-Open dataset for the paper **"Comparative evaluation of large language models as assistants for solving university-level mathematics problems: a process-level rubric analysis"** (Kubrak V.A., Spivak D.R., Nozdryakov D.V., 2026).
+**English** · [Русский](README.ru.md)
 
-Unlike answer-only math benchmarks, this dataset evaluates the **solution process**, not just the final answer, using a multidimensional rubric graded by an LLM-as-a-judge.
+Open dataset for the paper **"Comparative evaluation of large language models as assistants for solving university-level mathematics problems: a process-level rubric analysis"** (Kubrak V.A., Spivak D.R., Nozdryakov D.V., Zakrevskaya E.A., Sviridova O.A., 2026).
 
-> Открытый датасет к статье «Сравнительная оценка больших языковых моделей как помощников при решении математических задач университетского уровня». Оценивается **процесс решения**, а не только итоговый ответ.
+Unlike answer-only math benchmarks, this dataset evaluates the **solution process**, not just the final answer, using a multidimensional rubric graded by an LLM-as-a-judge. The source problems are university-level, in Russian, drawn from standard problem books.
+
+## Where is what
+
+| Path | What is there |
+|------|---------------|
+| [`data/problems/`](data/problems/) | The **75 source problems** (YAML, 5 areas × 15): statement, **reference answer**, difficulty, topic, source. |
+| [`data/responses/`](data/responses/) | **Raw model outputs** — 12 JSON files, one per model: full solution text, latency, token counts, model snapshot id. |
+| [`data/scores/`](data/scores/) | **Per-response judge scores** — 12 JSON files: answer correctness, solution validity, error type, comment. |
+| [`solutions/by-task/`](solutions/by-task/) | Human-readable: for each task, **every model's full solution labelled by model**, with its judge score. One file per area. |
+| [`solutions/best-solution-per-task.md`](solutions/best-solution-per-task.md) | One correct, highest-validity solution per task — an answer-key supplement. |
+| [`results/tables/`](results/tables/) | Aggregate **CSV tables**: overall, by area, by difficulty, error distribution, all scores. |
+| [`results/figures/`](results/figures/) | The paper's **figures**, colour, in [English](results/figures/en/) and [Russian](results/figures/ru/). |
+| [`prompts/`](prompts/) | The exact **solver prompt** and the **LLM-as-a-judge rubric prompt**. |
+| [`validation/`](validation/) | **Judge reliability**: human-expert and second-LLM grades, blind worksheets, grading instructions — see [validation/README](validation/README.md). |
+| [`code/evaluate.py`](code/evaluate.py) | The **LLM-as-a-judge** scoring script. |
 
 ## Repository structure
 
 ```
 .
 ├── data/
-│   ├── problems/      75 original tasks (YAML): statement, reference answer, difficulty, topic, source
-│   ├── responses/     raw model responses (12 JSON, one per model): full text, latency, tokens, snapshot id
-│   └── scores/        per-response judge scores (12 JSON): correctness, validity, error type, comment
+│   ├── problems/      75 tasks (YAML): statement, reference answer, difficulty, topic, source
+│   ├── responses/     raw model responses (12 JSON, one per model)
+│   └── scores/        per-response judge scores (12 JSON)
 ├── results/
-│   └── tables/        aggregate CSVs (overall, by-section, by-difficulty, error distribution, all scores)
-├── solutions/         human-readable: by-task/ (all 12 models per task) + best-solution-per-task.md
-├── prompts/           solver prompt + LLM-as-a-judge rubric prompt
-├── validation/        judge reliability: README (results), Opus-4.8 second-judge grades, blind worksheet,
-│                      and HUMAN_VALIDATION_PROMPT (instructions for human grading)
+│   ├── tables/        aggregate CSVs
+│   └── figures/       figures (en/ and ru/), colour
+├── solutions/         by-task/ (all 12 models per task) + best-solution-per-task.md
+├── prompts/           solver prompt + judge rubric prompt
+├── validation/        judge reliability (human + second LLM)
 └── code/              evaluate.py (the LLM-as-a-judge scoring script)
 ```
 
@@ -33,8 +48,8 @@ Unlike answer-only math benchmarks, this dataset evaluates the **solution proces
 
 ### Headline results (mean solution validity, 0–3)
 
-| Model | Accuracy | Validity | Median latency (s) | n |
-|-------|----------|----------|--------------------|---|
+| Model | Accuracy (0–1) | Validity (0–3) | Avg. time (s) | n |
+|-------|----------------|----------------|---------------|---|
 | Grok 4.3 | 0.827 | **2.65** | 10.7 | 75 |
 | Claude Opus 4 | 0.787 | 2.60 | 41.7 | 75 |
 | DeepSeek V4 Flash | 0.803 | 2.58 | 32.2 | 71 |
@@ -50,20 +65,24 @@ Unlike answer-only math benchmarks, this dataset evaluates the **solution proces
 
 Differences across models are significant (Friedman test, χ²=351, p<0.001).
 
+![Mean solution validity by model and mathematical area](results/figures/en/heatmap_validity.png)
+
 ### Errata
 
-Judge validation surfaced two reference-key errors, now corrected in `data/problems/`: **DM-12** (a₁₀ = 10240, not 5120) and **MS-13** (variance D(α\*) = α²/(n−2)). Task **NT-14** reference answer added (d=111, derived in the paper supplement).
+Judge validation surfaced two reference-key errors, now corrected in `data/problems/`: **DM-12** (a₁₀ = 10240, not 5120) and **MS-13** (variance D(α\*) = α²/(n−2)). Task **NT-14** reference answer added (d = 111, derived in the paper supplement).
 
 ## License
 
-Dataset: **CC BY 4.0**. Code: **MIT**. See `LICENSE`.
+Dataset: **CC BY 4.0**. Code: **MIT**. See [`LICENSE`](LICENSE).
 
 ## Citation
 
 ```bibtex
 @article{kubrak2026llmmath,
-  title   = {Comparative evaluation of large language models as assistants for solving university-level mathematics problems: a process-level rubric analysis},
-  author  = {Kubrak, V.A. and Spivak, D.R. and Nozdryakov, D.V.},
+  title   = {Comparative evaluation of large language models as assistants for solving
+             university-level mathematics problems: a process-level rubric analysis},
+  author  = {Kubrak, V.A. and Spivak, D.R. and Nozdryakov, D.V. and
+             Zakrevskaya, E.A. and Sviridova, O.A.},
   year    = {2026}
 }
 ```

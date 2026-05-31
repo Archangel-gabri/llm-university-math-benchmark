@@ -1,5 +1,7 @@
 # Differential Equations (DE)
 
+*[← Solutions index](../README.md) · [Problems & reference answers](../../data/problems) · [Main README](../../README.md)*
+
 Per task: problem, reference answer, and all 12 models' solutions with judge scores.
 
 _Source: https://github.com/Archangel-gabri/llm-university-math-benchmark_
