@@ -4,13 +4,14 @@
 
 Open dataset for the paper **"Comparative evaluation of large language models as assistants for solving university-level mathematics problems: a process-level rubric analysis"** (Kubrak V.A., Spivak D.R., Nozdryakov D.V., Zakrevskaya E.A., Sviridova O.A., 2026).
 
-Unlike answer-only math benchmarks, this dataset evaluates the **solution process**, not just the final answer, using a multidimensional rubric graded by an LLM-as-a-judge. The source problems are university-level, in Russian, drawn from standard problem books.
+Unlike answer-only math benchmarks, this dataset evaluates the **solution process**, not just the final answer, using a multidimensional rubric graded by an LLM-as-a-judge. The source problems are university-level, in Russian, drawn from standard problem books; an **English translation of all 75 problems and reference answers** is provided in [`data/problems_en/`](data/problems_en/).
 
 ## Where is what
 
 | Path | What is there |
 |------|---------------|
-| [`data/problems/`](data/problems/) | The **75 source problems** (YAML, 5 areas × 15): statement, **reference answer**, difficulty, topic, source. |
+| [`data/problems/`](data/problems/) | The **75 source problems** in **Russian** (YAML, 5 areas × 15) — exactly as administered to the models: statement, **reference answer**, difficulty, topic, source. |
+| [`data/problems_en/`](data/problems_en/) | **English translation** of all 75 problems and reference answers (same ids/structure; mathematics preserved verbatim). For readers who do not read Russian. |
 | [`data/responses/`](data/responses/) | **Raw model outputs** — 12 JSON files, one per model: full solution text, latency, token counts, model snapshot id. |
 | [`data/scores/`](data/scores/) | **Per-response judge scores** — 12 JSON files: answer correctness, solution validity, error type, comment. |
 | [`solutions/by-task/`](solutions/by-task/) | Human-readable: for each task, **every model's full solution labelled by model**, with its judge score. One file per area. |
@@ -26,7 +27,8 @@ Unlike answer-only math benchmarks, this dataset evaluates the **solution proces
 ```
 .
 ├── data/
-│   ├── problems/      75 tasks (YAML): statement, reference answer, difficulty, topic, source
+│   ├── problems/      75 tasks (YAML, Russian): statement, reference answer, difficulty, topic, source
+│   ├── problems_en/   English translation of the 75 tasks (same ids and structure)
 │   ├── responses/     raw model responses (12 JSON, one per model)
 │   └── scores/        per-response judge scores (12 JSON)
 ├── results/

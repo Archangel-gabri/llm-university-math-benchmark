@@ -1,0 +1,124 @@
+section: "Mathematical Statistics"
+section_id: MS
+total: 15
+
+problems:
+  - id: MS-1
+    text: "Let X = (X₁, ..., Xₙ) be a sample from a normal distribution with parameters a and σ². Compute the mean and variance of the statistic X̄ (the sample mean). What distribution does it have?"
+    difficulty: 1
+    type: computational
+    topic: "Properties of estimators"
+    answer: "EX̄ = a, DX̄ = σ²/n, X̄ ~ N(a, σ²/n)"
+    source: "Seminar 1, problem 1"
+
+  - id: MS-2
+    text: "X = (X₁, ..., Xₙ) is a sample from the distribution N(a, D). Find the method-of-moments estimators for the parameters a and D when both parameters are unknown."
+    difficulty: 1
+    type: computational
+    topic: "Method of moments"
+    answer: "a* = X̄, D* = X̄² − (X̄)² = S²"
+    source: "Seminar 2, problem 6"
+
+  - id: MS-3
+    text: "Let X = (X₁, ..., Xₙ) be a sample from a normal distribution N(a, D), D = σ² > 0. Find the maximum-likelihood estimator of both parameters."
+    difficulty: 1
+    type: computational
+    topic: "Maximum likelihood method"
+    answer: "a* = X̄, D* = (1/n)Σ(Xᵢ − X̄)² = S²"
+    source: "Seminar 3, problem 5"
+
+  - id: MS-4
+    text: "Let X = (X₁, ..., Xₙ) be a sample from a normal distribution N(a, σ²), where σ² is regarded as a known parameter. Construct a central confidence interval with confidence level 1−α for the parameter a using the statistic T(X) = (X̄ − a)/(σ/√n)."
+    difficulty: 1
+    type: computational
+    topic: "Confidence intervals"
+    answer: "(X̄ − z_{1−α/2}·σ/√n; X̄ + z_{1−α/2}·σ/√n)"
+    source: "Seminar 5, problem 2"
+
+  - id: MS-5
+    text: "A company accountant decided to undertake a sampling check and selected 18 components sold during the previous month. The costs of the selected components are: 82, 30, 98, 116, 80, 150, 200, 88, 70, 90, 160, 100, 86, 76, 90, 140, 76, 68 monetary units. Find an estimate of the average cost of all components and construct a confidence interval for it with reliability 0.95. Estimate what sample size is required to achieve precision δ = 3."
+    difficulty: 1
+    type: applied
+    topic: "Applied problem, CI"
+    answer: "(80.11; 119.89), n = 792"
+    source: "Seminar 6, task 3"
+
+  - id: MS-6
+    text: "Let X = (X₁, ..., Xₙ) be a sample from the distribution U[0, θ]. Investigate the estimator θ* = X₍ₙ₎ (the sample maximum) for unbiasedness and consistency. Find the bias b(θ)."
+    difficulty: 2
+    type: computational
+    topic: "Properties of estimators, order statistics"
+    answer: "Eθ* = nθ/(n+1), b(θ) = −θ/(n+1). Biased but consistent."
+    source: "Seminar 1, problem 4"
+
+  - id: MS-7
+    text: "X = (X₁, ..., Xₙ) is a sample from the distribution Γ(α, λ). Find the method-of-moments estimators for α and λ using the first two moments (both parameters are regarded as unknown)."
+    difficulty: 2
+    type: computational
+    topic: "Method of moments, gamma distribution"
+    answer: "EX₁ = α/λ, EX₁² = α(α+1)/λ². Hence: λ* = X̄/(X̄² − (X̄)²), α* = (X̄)²/(X̄² − (X̄)²)"
+    source: "Seminar 2, problem 3"
+
+  - id: MS-8
+    text: "X = (X₁, ..., Xₙ) is a sample from the distribution with density f(y) = 3θy²e^{−θy³}, y > 0, θ > 0. Find the maximum-likelihood estimator θ*. Investigate the estimator τ* = 1/θ* of the parameter τ = 1/θ for unbiasedness."
+    difficulty: 2
+    type: computational
+    topic: "ML, non-standard distribution"
+    answer: "θ* = n/Σ(Xᵢ³). τ* = Σ(Xᵢ³)/n = X̄³. Unbiasedness: check Eτ* = 1/θ."
+    source: "Seminar 3, problem 8"
+
+  - id: MS-9
+    text: "Let X = (X₁, ..., Xₙ) be a sample from the Bernoulli distribution B(θ), θ ∈ (0,1). Write down the Rao-Cramér inequality and check the efficiency of the unbiased estimator of the success probability θ* = X̄."
+    difficulty: 2
+    type: computational
+    topic: "Rao-Cramér inequality, efficiency"
+    answer: "I(θ) = 1/(θ(1−θ)). Lower bound: θ(1−θ)/n. DX̄ = θ(1−θ)/n. The estimator is efficient."
+    source: "Seminar 4, problem 3"
+
+  - id: MS-10
+    text: "Let X = (X₁, ..., Xₙ) be a sample from the Poisson distribution with parameter λ. Construct an asymptotically exact confidence interval for λ with confidence level 1−α."
+    difficulty: 2
+    type: computational
+    topic: "Asymptotic confidence intervals"
+    answer: "By the CLT: T(X) = (X̄ − λ)/√(X̄/n) → N(0,1). CI: (X̄ − z·√(X̄/n); X̄ + z·√(X̄/n))"
+    source: "Seminar 6, problem 2"
+
+  - id: MS-11
+    text: "Let X be a sample from some distribution with finite variance θ = DX. Investigate the estimators θ₁* = S² and θ₂* = S₀² for unbiasedness and consistency. Find the biases."
+    difficulty: 3
+    type: computational
+    topic: "Bias of the sample variance"
+    answer: "ES² = (n−1)θ/n, b₁ = −θ/n (biased). ES₀² = θ, b₂ = 0 (unbiased). Both consistent."
+    source: "Seminar 1, problem 7"
+
+  - id: MS-12
+    text: "Let X = (X₁, ..., Xₙ) be a sample from a three-point distribution: P(X₁=1) = θ, P(X₁=2) = 2θ, P(X₁=3) = 1−3θ. Find the maximum-likelihood estimator of the parameter θ."
+    difficulty: 3
+    type: computational
+    topic: "ML, discrete distribution"
+    answer: "L(θ) = θ^{n₁}(2θ)^{n₂}(1−3θ)^{n₃}. dL/dθ = 0 → θ* = (n₁+n₂)/(3n)"
+    source: "Seminar 3, problem 4"
+
+  - id: MS-13
+    text: "Let X = (X₁, ..., Xₙ) be a sample from the exponential distribution E_α with parameter α > 0. Check the estimator α* = (n−1)/(nX̄) (n > 2) for efficiency. Hint: the sum of n independent E_α has the distribution Γ(α, n)."
+    difficulty: 3
+    type: computational
+    topic: "Efficiency, gamma distribution"
+    answer: "Via the distribution Γ(α,n): α*=(n−1)/S, S~Γ(α,n). E α*=α (unbiased). D(α*)=α²/(n−2). Rao-Cramér bound: α²/n. Since α²/(n−2)>α²/n for n>2, it is not efficient for finite n, but it is asymptotically efficient."
+    source: "Seminar 4, problem 8"
+
+  - id: MS-14
+    text: "Let X = (X₁, ..., Xₙ) be a sample from a normal distribution N(a, σ²). Construct a central confidence interval with confidence level 1−α for the parameter a using the statistic T(X) = √n·(X̄ − a)/S₀, showing that it has the distribution t(n−1)."
+    difficulty: 3
+    type: computational
+    topic: "t-distribution, exact CI"
+    answer: "T ~ t(n−1). CI: (X̄ − t_{α/2,n−1}·S₀/√n; X̄ + t_{α/2,n−1}·S₀/√n)"
+    source: "Seminar 5, problem 6"
+
+  - id: MS-15
+    text: "Let X = (X₁, ..., Xₙ) and Y = (Y₁, ..., Yₘ) be two independent samples from normal distributions N(a₁, σ²) and N(a₂, σ²) (with the same unknown variances). Prove that ((n−1)S₀²(X) + (m−1)S₀²(Y))/σ² ~ χ²(n+m−2). Devise a central statistic depending on X̄ − Ȳ, and use it to construct a central confidence interval with reliability 1−α for the parameter a₁ − a₂."
+    difficulty: 3
+    type: proof
+    topic: "CI for the difference of means"
+    answer: "T = (X̄−Ȳ)/√(S²_pool·(1/n+1/m)) ~ t(n+m−2), where S²_pool = ((n−1)S₀²(X)+(m−1)S₀²(Y))/(n+m−2)"
+    source: "Seminar 6, problem 6"

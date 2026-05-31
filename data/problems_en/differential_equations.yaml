@@ -1,0 +1,129 @@
+section: "Differential Equations"
+section_id: DE
+total: 15
+
+problems:
+  - id: DE-1
+    text: "Prove the formula: det(e^A) = e^{tr A}, where A is a square matrix."
+    difficulty: 3
+    type: proof
+    topic: "Matrix exponential"
+    answer: "Proof via the Jordan normal form: A = PJP^{-1}, e^A = Pe^JP^{-1}, det(e^A) = det(e^J) = product of e^{λ_i} = e^{Σλ_i} = e^{tr A}"
+    source: "Filippov, problem 4*"
+    photo: "photos/Nkj0F52G0vdP1O1.jpg"
+
+  - id: DE-2
+    text: "Show that the equation dx/dt + x = f(t), where |f(t)| ≤ M for -∞ < t < +∞, has a unique solution that is bounded for -∞ < t < +∞. Find this solution. Show that the obtained solution is periodic if f(t) is periodic."
+    difficulty: 3
+    type: proof
+    topic: "Linear first-order ODE, bounded solutions"
+    answer: "x(t) = ∫_{-∞}^{t} e^{-(t-s)} f(s) ds. Uniqueness via an estimate of the difference of two bounded solutions."
+    source: "Filippov, problem 181*"
+    photo: "photos/photo_12-51-35.jpg"
+
+  - id: DE-3
+    text: "Solve the system: ẍ + 4ẋ − 2x − 2ẏ − y = 0, ẍ − 4ẋ − ÿ + 2ẏ + 2y = 0."
+    difficulty: 2
+    type: computational
+    topic: "System of second-order ODEs"
+    answer: "Via the characteristic equation of the system"
+    source: "Filippov, problem 824"
+    photo: "photos/photo_12-51-44.jpg"
+
+  - id: DE-4
+    text: "In each of the regions where the type of the equation is preserved, find the general solution: u_{xy} + xu_x + 2yu_y + 2xyu = 0."
+    difficulty: 2
+    type: computational
+    topic: "Partial differential equations, classification"
+    answer: "Change of variables, reduction to canonical form, integration"
+    source: "Filippov, problem 2.11.8"
+    photo: "photos/photo_12-51-53.jpg"
+
+  - id: DE-5
+    text: "Prove that the solution of the Cauchy problem u_{xy} = 0, |x| < 1, 0 < y < 1; u|_{y=x²} = 0, u_y|_{y=x²} = u_1(x) exists only when u_1(x) ∈ C(-1,1), xu_1(x) ∈ C¹(-1,1), and u_1(x) is an even function. Show that u(x,y) = 2∫_x^{√y} ξu_1(ξ)dξ."
+    difficulty: 3
+    type: proof
+    topic: "Cauchy problem for a PDE"
+    answer: "u(x,y) = 2∫_x^{√y} ξu_1(ξ)dξ"
+    source: "Filippov, problem 12.4"
+    photo: "photos/photo_12-52-08.jpg"
+
+  - id: DE-6
+    text: "Solve the differential equation: y' = x²/y."
+    difficulty: 1
+    type: computational
+    topic: "Separable ODE"
+    answer: "3y² − 2x³ = C"
+    source: "Demidovich (analogue)"
+
+  - id: DE-7
+    text: "Find the general solution of the equation: y' + 2y/x = cos x."
+    difficulty: 1
+    type: computational
+    topic: "Linear first-order ODE"
+    answer: "y = (sin x + C)/x²"
+    source: "Demidovich (analogue)"
+
+  - id: DE-8
+    text: "Solve the homogeneous equation: y' = y/x + tan(y/x)."
+    difficulty: 1
+    type: computational
+    topic: "Homogeneous equation"
+    answer: "sin(y/x) = Cx"
+    source: "Demidovich (analogue)"
+
+  - id: DE-9
+    text: "Solve the exact differential equation: (2x + y)dx + (x + 2y)dy = 0."
+    difficulty: 1
+    type: computational
+    topic: "Exact differentials"
+    answer: "x² + xy + y² = C"
+    source: "mathprofi.ru"
+
+  - id: DE-10
+    text: "Solve the Bernoulli equation: y' + y/x = y²."
+    difficulty: 2
+    type: computational
+    topic: "Bernoulli equation"
+    answer: "yx(C − ln|x|) = 1; singular solution y = 0"
+    source: "math24.ru"
+
+  - id: DE-11
+    text: "Find the general solution: y'' − 5y' + 6y = 0."
+    difficulty: 2
+    type: computational
+    topic: "Second-order ODE with constant coefficients"
+    answer: "y = C₁e^{2x} + C₂e^{3x}"
+    source: "mathprofi.ru"
+
+  - id: DE-12
+    text: "Solve the Cauchy problem: y' = xy, y(0) = 1."
+    difficulty: 2
+    type: computational
+    topic: "Cauchy problem"
+    answer: "y = e^{x²/2}"
+    source: "Standard problem"
+
+  - id: DE-13
+    text: "Solve the system of ODEs by the matrix method: x' = 2x + y, y' = x + 2y."
+    difficulty: 3
+    type: computational
+    topic: "Linear system of ODEs"
+    answer: "λ₁=1, λ₂=3. x = C₁eᵗ + C₂e³ᵗ, y = −C₁eᵗ + C₂e³ᵗ"
+    source: "KFU, problem set"
+
+  - id: DE-14
+    text: "Using the method of variation of parameters, find the general solution: y'' + 2y' + y = e^{−x}√(x+1)."
+    difficulty: 3
+    type: computational
+    topic: "Method of variation of parameters (Lagrange)"
+    answer: "y = (C₁ + C₂x)e^{−x} + (4/15)(x+1)^{5/2}e^{−x}"
+    source: "1cov-edu.ru"
+
+  - id: DE-15
+    text: "Determine the type and reduce to canonical form the equation: u_{xx} + 10u_{xy} + 9u_{yy} = 0."
+    difficulty: 3
+    type: computational
+    topic: "Classification of PDEs"
+    answer: "D = 25 − 9 = 16 > 0, hyperbolic type. Characteristics: ξ = y−x, η = y−9x. Canonical form: u_{ξη} = 0"
+    source: "TPU, mathematical physics course"

@@ -1,0 +1,124 @@
+section: "Discrete Mathematics and Mathematical Logic"
+section_id: DM
+total: 15
+
+problems:
+  - id: DM-1
+    text: "A propositional logic formula is given: F(x,y,z) = (x→y) ∧ (¬y→z) → (x→z). a) Construct the truth table. b) Is F a tautology? c) If not, simplify the formula."
+    difficulty: 1
+    type: computational
+    topic: "Propositional logic"
+    answer: "Not a tautology: F(1,1,0)=0. F = ¬x ∨ ¬y ∨ z"
+    source: "Yablonsky, ch.1"
+
+  - id: DM-2
+    text: "In a group of 100 students: 70 study calculus, 65 — algebra, 50 — geometry. Calculus and algebra — 40, calculus and geometry — 30, algebra and geometry — 25, all three — 10. How many students study at least one subject?"
+    difficulty: 1
+    type: computational
+    topic: "Sets, inclusion-exclusion formula"
+    answer: "|A∪B∪C| = 70+65+50−40−30−25+10 = 100"
+    source: "Standard problem"
+
+  - id: DM-3
+    text: "A graph G is given with vertices {1,2,3,4,5,6} and edges {(1,2),(1,3),(2,3),(2,4),(3,5),(4,5),(4,6),(5,6)}. a) Find the degrees of all vertices. b) Verify the handshaking lemma. c) Is the graph connected? d) Does an Eulerian path exist?"
+    difficulty: 1
+    type: computational
+    topic: "Graphs (basic)"
+    answer: "Degrees: d(1)=2, d(2)=3, d(3)=3, d(4)=3, d(5)=3, d(6)=2. Σd=16=2·8. Connected. 4 vertices of odd degree → no Eulerian path."
+    source: "Novikov"
+
+  - id: DM-4
+    text: "a) How many ways are there to choose 3 items out of 10? b) How many ways are there to seat 5 people at a round table? c) How many distinct anagrams can be formed from the letters of the word MATEMATIKA?"
+    difficulty: 1
+    type: computational
+    topic: "Combinatorics"
+    answer: "a) C(10,3)=120. b) (5−1)!=24. c) 10!/(3!·2!·1!·1!·1!·1!·1!) = 151200 (M×3, A×2, T,E,I,K once each)"
+    source: "Standard problems"
+
+  - id: DM-5
+    text: "Construct the PDNF and PCNF for the Boolean function f(x,y,z) = x ⊕ (y ∧ z)."
+    difficulty: 1
+    type: computational
+    topic: "Boolean algebra, normal forms"
+    answer: "f=1 at (0,0,0),(0,0,1),(0,1,0),(1,1,1). PDNF: ¬x¬y¬z ∨ ¬x¬yz ∨ ¬xy¬z ∨ xyz. PCNF: (x∨y∨¬z)(x∨¬y∨¬z)(¬x∨y∨z)(¬x∨¬y∨z)"
+    source: "Yablonsky"
+
+  - id: DM-6
+    text: "Write the negation of the formula: ∀ε>0 ∃δ>0: ∀x (|x−a|<δ → |f(x)−L|<ε). Give a verbal interpretation of the original statement and of its negation."
+    difficulty: 2
+    type: computational
+    topic: "Predicate logic"
+    answer: "Negation: ∃ε>0 ∀δ>0 ∃x: |x−a|<δ ∧ |f(x)−L|≥ε. Original: definition of a limit. Negation: the limit is not equal to L."
+    source: "Standard problem"
+
+  - id: DM-7
+    text: "A directed weighted graph with 6 vertices (A-F) is given. Edges: A→B(2), A→C(5), B→C(1), B→D(4), C→D(2), C→E(3), D→E(1), D→F(7), E→F(3). Find the shortest distances from A to all vertices using Dijkstra's algorithm. Show the step-by-step execution."
+    difficulty: 2
+    type: computational
+    topic: "Dijkstra's algorithm"
+    answer: "d(A)=0, d(B)=2, d(C)=3, d(D)=5, d(E)=6, d(F)=9"
+    source: "Novikov"
+
+  - id: DM-8
+    text: "Solve the recurrence relation: aₙ = 3aₙ₋₁ − 2aₙ₋₂, a₀ = 1, a₁ = 3. Find a₅."
+    difficulty: 2
+    type: computational
+    topic: "Recurrence relations"
+    answer: "Characteristic equation: k²−3k+2=0, k₁=1, k₂=2. aₙ=C₁+C₂·2ⁿ. a₀=1: C₁+C₂=1. a₁=3: C₁+2C₂=3. C₁=−1, C₂=2. aₙ=2ⁿ⁺¹−1. a₅=63."
+    source: "Gavrilov-Sapozhenko"
+
+  - id: DM-9
+    text: "On the set of integers ℤ a relation is defined: xRy ⟺ 5 | (x−y). a) Is R an equivalence relation? b) If so, describe the equivalence classes."
+    difficulty: 2
+    type: computational
+    topic: "Equivalence relations"
+    answer: "Yes (reflexive, symmetric, transitive). 5 classes: [0]={...,-10,-5,0,5,10,...}, [1], [2], [3], [4]."
+    source: "Standard problem"
+
+  - id: DM-10
+    text: "Prove by mathematical induction: 1² + 2² + ... + n² = n(n+1)(2n+1)/6."
+    difficulty: 2
+    type: proof
+    topic: "Mathematical induction"
+    answer: "Base n=1: 1=1·2·3/6=1 ✓. Step: assume for n, verify for n+1: n(n+1)(2n+1)/6 + (n+1)² = (n+1)(n+2)(2n+3)/6."
+    source: "Standard problem"
+
+  - id: DM-11
+    text: "The Petersen graph is a 3-regular graph on 10 vertices. a) Does it have an Eulerian cycle? b) Does it have a Hamiltonian cycle? c) Find the chromatic number."
+    difficulty: 3
+    type: computational
+    topic: "Petersen graph"
+    answer: "a) No (all vertices have odd degree 3). b) No (classical result). c) χ=3."
+    source: "Classic of graph theory"
+
+  - id: DM-12
+    text: "Find the generating function and the formula for the general term of the sequence defined recursively: aₙ = 4aₙ₋₁ − 4aₙ₋₂, a₀ = 0, a₁ = 2. Find a₁₀."
+    difficulty: 3
+    type: computational
+    topic: "Generating functions"
+    answer: "A(x)=2x/(1−2x)²=Σ n·2ⁿ·xⁿ. aₙ=n·2ⁿ (n≥0). a₁₀=10·2¹⁰=10240."
+    source: "Gavrilov-Sapozhenko"
+
+  - id: DM-13
+    text: "Determine whether the following systems of Boolean functions are complete (use Post's theorem): a) {∧, ⊕, 1}; b) {∨, →}; c) {¬, ∧, 0}; d) {↔, ∨}."
+    difficulty: 3
+    type: computational
+    topic: "Completeness, Post's theorem"
+    answer: "a) Complete (not in T₀: 1; not in T₁: ⊕(1,1)=0; not in S: ∧; not in M: ⊕; not in L: ∧). b) Not complete (⊂T₁). c) Complete. d) Not complete (⊂T₀: ↔(0,0)=1? No. Check: {↔,∨}⊂S — no. In detail: ∨∈T₀∩T₁∩M, ↔∈T₀? ↔(0,0)=1, hence ↔∉T₀. But {↔,∨} ⊂ class of linear functions? No. In fact not complete: ⊂T₁)."
+    source: "Yablonsky"
+
+  - id: DM-14
+    text: "Hamming code (7,4). The word 1010110 was received. a) Compute the syndrome. b) Determine the error position (if any). c) Recover the original code word. d) What is the minimum distance of the code?"
+    difficulty: 3
+    type: computational
+    topic: "Coding theory, Hamming code"
+    answer: "Syndrome s=(s₁,s₂,s₃)=(1,1,0)₂=6. Error in bit 6. Corrected: 1010100. dₘᵢₙ=3."
+    source: "Standard problem"
+
+  - id: DM-15
+    text: "Consider the set of divisors of the number 30 with the divisibility relation (D₃₀, |). a) Construct the Hasse diagram. b) Find all maximal chains. c) Find a maximum antichain. d) Is (D₃₀, |) a lattice? e) Is it isomorphic to the power set 2^{2,3,5}?"
+    difficulty: 3
+    type: computational
+    topic: "Partial orders, lattices"
+    answer: "D₃₀={1,2,3,5,6,10,15,30}. 6 maximal chains of length 4 (for example 1→2→6→30). Maximum antichain: {6,10,15} (size 3). Yes, a lattice. Isomorphic to 2^{2,3,5} (each divisor ↔ subset of primes)."
+    source: "Gavrilov-Sapozhenko"

@@ -1,0 +1,127 @@
+section: "Number Theory and Combinatorics"
+section_id: NT
+total: 15
+
+problems:
+  - id: NT-1
+    text: "Prove that for any natural number n the number n³ − n is divisible by 6."
+    difficulty: 1
+    type: proof
+    topic: "Divisibility"
+    answer: "n³−n = n(n−1)(n+1) — a product of three consecutive integers. Divisible by 2 and by 3."
+    source: "Vinogradov"
+
+  - id: NT-2
+    text: "Find GCD(252, 198) using the Euclidean algorithm."
+    difficulty: 1
+    type: computational
+    topic: "GCD, Euclidean algorithm"
+    answer: "252=1·198+54; 198=3·54+36; 54=1·36+18; 36=2·18+0. GCD=18"
+    source: "Buchstab"
+
+  - id: NT-3
+    text: "Find the remainder when 2¹⁰⁰ is divided by 7."
+    difficulty: 1
+    type: computational
+    topic: "Remainders, cycles of powers"
+    answer: "2³≡1 (mod 7), cycle=3. 100=33·3+1. 2¹⁰⁰≡2 (mod 7). Answer: 2"
+    source: "Nesterenko"
+
+  - id: NT-4
+    text: "In how many ways can 3 people be chosen from a group of 10 people?"
+    difficulty: 1
+    type: computational
+    topic: "Combinatorics, combinations"
+    answer: "C(10,3) = 120"
+    source: "Standard problem"
+
+  - id: NT-5
+    text: "Prove that among any 13 natural numbers there exist two whose difference is divisible by 12."
+    difficulty: 1
+    type: proof
+    topic: "Pigeonhole principle"
+    answer: "12 possible remainders, 13 numbers → by the pigeonhole principle two coincide."
+    source: "Junior Mechmath MSU"
+
+  - id: NT-6
+    text: "Find the remainder when 2²⁰⁰ is divided by 13."
+    difficulty: 2
+    type: computational
+    topic: "Fermat's little theorem"
+    answer: "2¹²≡1 (mod 13). 200=16·12+8. 2²⁰⁰≡2⁸=256≡9 (mod 13). Answer: 9"
+    source: "Vinogradov"
+
+  - id: NT-7
+    text: "Compute the value of Euler's totient function φ(360)."
+    difficulty: 2
+    type: computational
+    topic: "Euler's totient function"
+    answer: "360=2³·3²·5. φ(360)=360·(1−½)·(1−⅓)·(1−⅕)=96"
+    source: "Buchstab"
+
+  - id: NT-8
+    text: "How many natural numbers from 1 to 1000 are divisible by neither 2, nor 3, nor 5?"
+    difficulty: 2
+    type: computational
+    topic: "Inclusion-exclusion"
+    answer: "|A₂∪A₃∪A₅|=734. Answer: 1000−734=266"
+    source: "AESC MSU"
+
+  - id: NT-9
+    text: "Prove that among any n natural numbers there exist several (possibly one) whose sum is divisible by n."
+    difficulty: 3
+    type: proof
+    topic: "Divisibility, pigeonhole principle"
+    answer: "Partial sums S₁,...,Sₙ. If Sₖ≡0 — done. Otherwise among n remainders from {1,...,n−1} by pigeonhole Sᵢ≡Sⱼ, then aᵢ₊₁+...+aⱼ is divisible by n."
+    source: "Junior Mechmath MSU, All-Russian Olympiad"
+
+  - id: NT-10
+    text: "The numbers 1, 2, 3, ..., 2025 are written on a board. In one move it is allowed to erase any two numbers a and b and write the number |a−b| in their place. Is it possible to achieve a state where the number 0 is left on the board?"
+    difficulty: 3
+    type: proof
+    topic: "Invariant (parity)"
+    answer: "No. The sum 1+...+2025 = 2051325 (odd). The operation preserves the parity of the sum (a+b ≡ |a−b| mod 2). The sum will remain odd, while 0 is even."
+    source: "All-Russian Olympiad (variation)"
+
+  - id: NT-11
+    text: "Prove that n⁵ − n is divisible by 30 for any integer n."
+    difficulty: 3
+    type: proof
+    topic: "Divisibility, Fermat's little theorem"
+    answer: "n⁵−n=n(n⁴−1)=n(n²−1)(n²+1). Divisible by 2 (n(n−1)), by 3 (n(n−1)(n+1)), by 5 (Fermat's little theorem: n⁵≡n mod 5). In total by 30."
+    source: "Vinogradov"
+
+  - id: NT-12
+    text: "Call two numbers almost equal if they are equal or differ from each other by no more than one. Is it true that from any rectangle with natural sides one can cut out some rectangle with natural sides whose area is almost equal to half the area of the original rectangle? The sides of the cut-out rectangle need not be parallel to the sides of the original rectangle."
+    difficulty: 3
+    type: proof
+    topic: "Geometry + number theory"
+    answer: "Not always. Counterexample: 5×15, S=75, S/2=37.5. A rectangle with S=37 or 38 is needed. Options: 1×37, 1×38, 2×19. The diagonal of 5×15 = √250 < 16. But the long side of each option is ≥ 19 > √250. It does not fit."
+    source: "Olympiad collection (E. Molchanov)"
+    photo: "photos/photo_12-52-26.jpg"
+
+  - id: NT-13
+    text: "Is it possible to place natural numbers at the vertices of a cube so that in each pair of numbers connected by an edge one of them is divisible by the other, while no such property holds for all other pairs?"
+    difficulty: 3
+    type: proof
+    topic: "Combinatorics, divisibility, construction"
+    answer: "Yes. Example: 2, 30, 42, 3, 70, 7, 105, 5 (over the vertices of the cube)."
+    photo: "photos/photo_12-59-57.jpg"
+
+  - id: NT-14
+    text: "99 numbers, none of which are equal, were written on a board. In a notebook 99·98/2 numbers were written down — all the differences of two numbers from the board (each time the smaller number was subtracted from the larger one). It turned out that in the notebook the number 1 was written down exactly 85 times. Let d be the largest number written in the notebook. Find the smallest possible value of d."
+    difficulty: 3
+    type: computational
+    topic: "Combinatorics, optimization"
+    answer: "d=111. «1» among the differences = (the number of consecutive pairs) = 99−(the number of blocks of consecutive numbers). 85=99−k ⇒ k=14 blocks, 13 gaps between them ≥2. d=a₉₉−a₁=Σ(98 neighboring differences)=85·1+Σ(13 gaps)≥85+13·2=111. Achievable when all gaps =2."
+    source: "L. Samoilov"
+    photo: "photos/photo_12-52-20.jpg"
+
+  - id: NT-15
+    text: "A natural number k is given. Along a road there stand n posts at equal intervals. Misha painted them in k colors and for each pair of same-colored posts between which there are no other posts of the same color computed the distance between them. All these distances turned out to be distinct. For what largest n could this have happened?"
+    difficulty: 3
+    type: computational
+    topic: "Combinatorics, estimation"
+    answer: "n = 3k − 1"
+    source: "M. Tikhomirov, F. Petrov; All-Russian Olympiad regional stage"
+    photo: "photos/photo_13-00-05.jpg"
