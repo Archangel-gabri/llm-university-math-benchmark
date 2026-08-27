@@ -19,7 +19,7 @@ Unlike answer-only math benchmarks, this dataset evaluates the **solution proces
 | [`results/tables/`](results/tables/) | Aggregate **CSV tables**: overall, by area, by difficulty, error distribution, all scores. |
 | [`results/figures/`](results/figures/) | The paper's **figures**, colour, in [English](results/figures/en/) and [Russian](results/figures/ru/). |
 | [`prompts/`](prompts/) | The exact **solver prompt** and the **LLM-as-a-judge rubric prompt**. |
-| [`validation/`](validation/) | **Judge reliability**: human-expert and second-LLM grades, blind worksheets, grading instructions — see [validation/README](validation/README.md). |
+| [`validation/`](validation/) | **Judge reliability**: a second-LLM re-grade of a 30-response subset, worksheets, grading instructions — see [validation/README](validation/README.md). **No human validation has been performed**; read that README before citing any κ from this repository. |
 | [`code/evaluate.py`](code/evaluate.py) | The **LLM-as-a-judge** scoring script. |
 
 ## Repository structure
@@ -36,7 +36,7 @@ Unlike answer-only math benchmarks, this dataset evaluates the **solution proces
 │   └── figures/       figures (en/ and ru/), colour
 ├── solutions/         by-task/ (all 12 models per task) + best-solution-per-task.md
 ├── prompts/           solver prompt + judge rubric prompt
-├── validation/        judge reliability (human + second LLM)
+├── validation/        judge reliability (second LLM only — see its README)
 └── code/              evaluate.py (the LLM-as-a-judge scoring script)
 ```
 
@@ -46,7 +46,7 @@ Unlike answer-only math benchmarks, this dataset evaluates the **solution proces
 - **75 problems**, single text track, **one run per problem** (N=1), `temperature=0`, `max_tokens=4096`.
 - **Judge:** `anthropic/claude-sonnet-4` against a reference answer. 887/900 responses scored.
 - **Rubric:** answer correctness (0/1), solution validity (0–3), error type (PE/CE/AE/HE/IE/NONE), completeness (0–2), clarity (0–2).
-- **Judge reliability** ([`validation/`](validation/README.md)): an independent **human expert** re-graded 30 responses (quadratic-weighted Cohen's κ = 0.74 on validity vs the judge), corroborated by a second LLM (Claude Opus 4.8) that agreed with the human at κ = 0.97.
+- **Judge reliability** ([`validation/`](validation/README.md)): a **second LLM** re-graded a stratified subset of 30 responses (quadratic-weighted Cohen's κ = 0.74 on validity vs the primary judge). This is model-vs-model agreement, not human validation — see the correction note below.
 
 ### Headline results (mean solution validity, 0–3)
 
@@ -68,6 +68,16 @@ Unlike answer-only math benchmarks, this dataset evaluates the **solution proces
 Differences across models are significant (Friedman test, χ²=351, p<0.001).
 
 ![Mean solution validity by model and mathematical area](results/figures/en/heatmap_validity.png)
+
+### Correction (2026-08-27)
+
+Earlier versions of this README, of `validation/README.md`, and of the commit history described the 30-response re-grade as the work of an **independent human expert (a co-author)**, and presented the second-LLM comparison as independent corroboration of that human. **That description was wrong.** Both grade sets were produced by language models; no human expert re-graded the subset. Consequences:
+
+- The **κ = 0.74** figure is agreement between a *second model* and the primary judge — not between a human and the judge.
+- The **κ = 0.97** figure compares two model outputs, so it corroborates nothing about human agreement.
+- The file formerly named `judge_validation_spivak_grades.json` carried a co-author's name for grades he did not produce. It is now `judge_validation_secondary_llm_grades.json`; `judge_validation_30_FILLED.xlsx` is now `judge_validation_30_filled_by_llm.xlsx`.
+
+Human validation of the judge remains **not done**. Until it is, this dataset should be cited as an LLM-as-a-judge benchmark with model-only reliability checks. The underlying experiment (12 models × 75 problems, raw responses, judge scores, tables) is unaffected by this correction — only the reliability claim was overstated.
 
 ### Errata
 
